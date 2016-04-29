@@ -35,57 +35,59 @@
 </head>
 
 <body>
-
 	<div class="reveal">
-
 		<div class="slides">
 
-			<!-- Slide 1-->
+			<!-- Start Slide -->
 			<section>
 				<h2>Haos Capstone</h2>
 				<h1 class="fragment grow current-visible"> Overview!</h1>
 				<p class="fragment highlight-grey"><em>(and most the rest)</em></p>
 			</section>
 
-			<!-- Slide2 -->
+			<!-- Quick Hello Slide -->
 			<section>
 				<h1>Hello World!</h1>
 				<p class="fragment highlight-grey">
-					I've said/done that a lot lately...
+					I've said/done that/this a lot lately...
 				</p>
 			</section>
 
-			<!-- Slide2 -->
+			<!-- Explanation/Intro -->
 			<section>
 				<h2>What is this?</h2>
 				<h1 class="fragment">
 					Proposal Product!
 				</h1>
-				<p><small class="fragment">but<span class="fragment">.</span class="fragment"><span class="fragment">.</span><span class="fragment">.</span></small></p>
+				<p><small class="fragment">but<span class="fragment">.</span><span class="fragment">.</span><span class="fragment">.</span></small></p>
 				<h1 class="fragment  highlight-grey">
-						WHAT WAS THE PROPSAL!!
+						WHAT WAS THE PROPSAL?!?!
 					</h1>
 			</section>
 
-			<!-- Slide 3-->
-			<!-- Nested vertical slides -->
+			<!-- Proposal Item One Slides START -->
+			<!-- Nested Vertical Slides! -->
 			<section>
-				<!-- Slide 3.1-->
-
+				<!-- Slide -->
 				<section>
 					<h2>Item One:</h2>
 					<p class="fragment  highlight-grey">
 						A persistent, always-updating, web presence demonstrating past, present, and future Computer Science studies and accomplishments.
 					</p>
 				</section>
-				<!-- Slide 3.2-->
+
+				<!-- Slide -->
 				<section>
 					<h2>Delivered:</h2>
 					<ul>
-						<li><small><em class="fragment">well,</em><span class="fragment">your looking at it.</span></small></li>
+						<li class="fragment"><small><em class="fragment">well, </em><span class="fragment">you're looking at it.</span></small></li>
+						<li class="fragment">
+							<p>URL to view this online : </p>
+						</li>
 					</ul>
 				</section>
-				<!-- Slide 3.3-->
+
+				<!-- Slide -->
 				<section>
 					<h2>Item one extras:</h2>
 					<ul>
@@ -93,19 +95,23 @@
 					</ul>
 				</section>
 			</section>
+			<!-- Proposal Item One Slides END -->
 
-			<!-- Slide 4 -->
-			<!-- Nested vertical slides -->
+
+
+			<!-- Proposal Item Two Slides START -->
+			<!-- Nested Vertical Slides! -->
 			<section>
-				<!-- Slide 4.1 -->
 
+				<!-- Slide -->
 				<section>
 					<h2>Item Two:</h2>
 					<p class="fragment  highlight-grey">
 						An offering to the open-source community of a simple framework for building and maintaining simple websites and web applications.
 					</p>
 				</section>
-				<!-- Slide 4.2 -->
+
+				<!-- Slide -->
 				<section>
 					<h2>Item Two delivered:</h2>
 					<ul>
@@ -114,32 +120,222 @@
 					</ul>
 					<p></p>
 				</section>
-				<!-- Slide 3.3 -->
+
+				<!-- Slide -->
 				<section>
 					<h2>Item Two Extras:</h2>
-					<ul>
-						<li>Cloud9 Scripted Build of Reveal JS GitHub Pages Sites</li>
-					</ul>
+					<h3>Cloud9 Scripted Build of Reveal JS GitHub Pages Sites.</h3>
 				</section>
+
+				<!-- Slide -->
+				<section>
+					<p>This bash function does the work. It requires a URL be passed in as the first arguement.</p>
+					<pre><code class="hljs" data-trim contenteditable>
+function setup_reveal_js_on_gh_pages() {
+
+    remote_url=$1
+    git clone https://github.com/hakimel/reveal.js.git
+    cd reveal.js/
+    git remote set-url origin "$1" 
+    git checkout -b gh-pages
+    git branch -D master
+    git push -u origin gh-pages
+}
+					</code></pre>
+				</section>
+
+
+				<!-- Slide -->
+				<section>
+					<p>This bit of code ensures an arguement before it calls the function.</p>
+					<pre><code class="hljs" data-trim contenteditable>
+if [ -z "$1" ]
+then
+    prompt_user_for_url
+else
+    setup_reveal_js_on_gh_pages "$1"
+fi
+					</code></pre>
+				</section>
+
+
+				<!-- Slide -->
+				<section>
+					<p>Here is the function that prompts the caller for a URL.</p>
+					<pre><code class="hljs" data-trim contenteditable>
+function prompt_user_for_url() {
+    echo "Hi! This script needs a URL for a new GitHub repository."
+    echo "1 * Visit this URL : https://github.com/new"
+    echo "Create a new repository, copy/paste URL to your clipboard."
+    echo "You can do that now, i'll wait here."
+    
+    read -p "Enter the GitHub repository : " repo_to_put_reveal_in
+    
+    echo "URL : $repo_to_put_reveal_in"
+    
+    setup_reveal_js_on_gh_pages "$repo_to_put_reveal_in"
+    
+    echo "Everything should be setup and ready to go!"
+    echo ""
+}
+					</code></pre>
+				</section>
+
 			</section>
+			<!-- Proposal Item Two Slides END -->
 
+
+
+			<!-- Proposal Item Three Slides START -->
+			<!-- Nested Vertical Slides -->
 			<section>
-				<!-- Slide 5.1 -->
 
+				<!-- Slide -->
 				<section>
 					<h2>Item Three:</h2>
 					<p class="fragment  highlight-grey">
 						A basic demonstration of chip level coding, development, and research.
 					</p>
 				</section>
-				<!-- Slide 5.2 -->
+
+				<!-- Slide -->
+				<section>
+					<h2>Arduino, MSP430, etc.<h2>
+					<p> Process Flow.</p>
+					<img data-src="resources/basic_embedded_circuit_code_flow.png">
+				</section>
+
+				<!-- Slide -->
 				<section>
 					<h2>Item Three delivered:</h2>
 					<ul>
-						<li>DEMO!</li>
+						<li>DEMO TIME!</li>
 					</ul>
 				</section>
-				<!-- Slide 5.3 -->
+
+				<!-- Slide -->
+				<!-- This section creates issues on cloud9 when served -->
+				<!-- POSSIBLY fixed with 'data-src' atribute change (from 'src' -->
+				<section>
+					<h2>What we saw:</h2>
+					<iframe frameborder='0' height='448' marginheight='0' marginwidth='0' scrolling='no' data-src='https://123d.circuits.io/circuits/2058675-capstone_oscilloscope_example/embed#breadboard' width='650'></iframe>
+				</section>
+
+				<!-- Slide -->
+				<section>
+					<h2>What the wiring was:</h2>
+					<iframe frameborder='0' height='448' marginheight='0' marginwidth='0' scrolling='no' data-src='https://123d.circuits.io/circuits/2058675-capstone_oscilloscope_example/embed#schematic' width='650'></iframe>
+				</section>
+
+				<!-- Slide -->
+				<section>
+					<h2>Oscilloscope (Arduino) setup code :</h2>
+					<pre><code class="hljs" data-trim contenteditable>
+const int analogPin = A0;
+ 
+void setup() {
+  //Setup serial connection
+  Serial.begin(9600); 
+					</code></pre>
+				</section>
+
+				<!-- Slide -->
+				<section>
+					<h2>Oscilloscope (Arduino) loop code :</h2>
+					<pre><code class="hljs" data-trim contenteditable>
+void loop() {
+  //Read analog pin
+  int val = analogRead(analogPin);
+ 
+  //Write analog value to serial port:
+  Serial.write( 0xff );                                                         
+  Serial.write( (val >> 8) & 0xff );                                            
+  Serial.write( val & 0xff );
+}				
+					</code></pre>
+				</section>
+
+				<!-- Slide -->
+				<section>
+					<h2>Pulse Signal (MSP430) :</h2>
+					<pre><code class="hljs" data-trim contenteditable>
+#define LED RED_LED
+
+void setup() {                
+	// initialize the digital pin as an output.
+	pinMode(LED, OUTPUT);
+	// start out with the led off.
+	digitalWrite(LED, LOW);  
+}
+
+void loop() {
+	  
+	// led off.
+	digitalWrite(LED, LOW);
+	// wait four seconds.
+	delay(4000);
+
+	// 4 loops for 4 pulses.
+	int i;
+
+	// pulse 1
+	for(i = 0; i < 50; i++)
+	{
+		// turn the LED on (HIGH is the voltage level)
+		digitalWrite(LED, HIGH);
+		// wait for 2 ms
+		delay(2);
+		// turn the LED off by making the voltage LOW
+		digitalWrite(LED, LOW);
+		// wait for 19 ms
+		delay(19);
+	}
+	// off for half a second.
+	digitalWrite(LED, LOW);
+	delay(500);
+
+	// pulse 2
+	for(i = 0; i < 50; i++)
+	{
+		digitalWrite(LED, HIGH);
+		delay(7);
+		digitalWrite(LED, LOW);
+		delay(13);
+	}
+	// off for half a second.
+	digitalWrite(LED, LOW);
+	delay(500);
+	
+	
+	// pulse 3
+	for(i = 0; i < 50; i++)
+	{
+		digitalWrite(LED, HIGH);
+		delay(10);
+		digitalWrite(LED, LOW);
+		delay(10);
+	}
+	// off for half a second.
+	digitalWrite(LED, LOW);
+	delay(500);
+
+	// pulse 4
+	for(i = 0; i < 50; i++)
+	{
+		digitalWrite(LED, HIGH);
+		delay(19);
+		digitalWrite(LED, LOW);
+		delay(1);
+	}
+	// off for half a second.
+	digitalWrite(LED, LOW);
+	delay(500);
+	}
+}
+					</code></pre>
+				</section>
+
+				<!-- Slide -->
 				<section>
 					<h2>Item Three extras:</h2>
 					<ul>
@@ -152,18 +348,23 @@
 					</ul>
 				</section>
 			</section>
+			<!-- Proposal Item Three Slides END -->
 
+
+
+
+
+			<!-- Proposal Item Four Slides START -->
 			<section>
 
-				<!-- Slide 6.1 -->
-
+				<!-- Slide -->
 				<section>
 					<h2>Item Four:</h2>
 					<p class="fragment  highlight-grey">
 						A set of tutorials in a simple, easily followed format.
 					</p>
 				</section>
-				<!-- Slide 6.2 -->
+				<!-- Slide -->
 				<section>
 					<h2>Item Four delivered:</h2>
 					<ul>
@@ -177,9 +378,10 @@
 
 
 
-			<!-- Slide x -->
+			<!-- DEMOS Slide -->
+			<!-- ToDo : Link Mack to Demo area -->
 			<section>
-				<h2>DEMOS!</h2>
+				<h2>DEMO!</h2>
 				<ul>
 					<li>Chips</li>
 					<li>Tools</li>
@@ -188,18 +390,22 @@
 
 
 
-			<!-- Slide x -->
+			<!-- Address Rubrick/Requirements Slides START -->
+			<!-- Nested Slide Set -->
 			<section>
+
+				<!-- Slide -->
 				<section>
 					<h2>Requirements Met!</h2>
 				</section>
 
+				<!-- Slide -->
 				<section>
 					<h2>Appropriate</h2>
 					<p>Git, Regex, Github, Linux, Windows, Bash, HTML, JavaScript, Node.js, reveal.js, deck.js, Google API, Github API, WebRTC, Remote Presenting, Open-Source Community...</p>
-
-
 				</section>
+
+				<!-- Slide -->
 				<section>
 					<h2>Challenges</h2>
 
@@ -219,7 +425,9 @@
 							<li>Solutions : Cloud9/Linux</li>
 						</ul>
 						<li>Cohesion/Depth</li>
-						<ul><li>Concern over not Learning any one thing very well.</li></ul>
+						<ul>
+							<li>Concern over not Learning any one thing very well.</li>
+						</ul>
 						<li>BUT:</li>
 						<ul>
 							<li>Accept Diversity</li>
@@ -228,6 +436,7 @@
 					</ul>
 				</section>
 
+				<!-- Slide -->
 				<section>
 					<h2>Planning/Follow Through</h2>
 					<ul>
@@ -236,6 +445,7 @@
 					</ul>
 				</section>
 
+				<!-- Slide -->
 				<section>
 					<h2>Software analysis and design</h2>
 					<ul>
@@ -245,6 +455,7 @@
 					</ul>
 				</section>
 
+				<!-- Slide -->
 				<section>
 					<h2>Code Quality, Sophistication, Commenting</h2>
 					<ul>
@@ -254,6 +465,7 @@
 					</ul>
 				</section>
 
+				<!-- Slide -->
 				<section>
 					<h2>Usability</h2>
 					<ul>
@@ -263,6 +475,7 @@
 					</ul>
 				</section>
 
+				<!-- Slide -->
 				<section>
 					<h2>Project Verification</h2>
 					<ul>
@@ -271,6 +484,7 @@
 					</ul>
 				</section>
 
+				<!-- Slide -->
 				<section>
 					<h2>EFFORT!</h2>
 					<ul>
@@ -279,6 +493,7 @@
 					</ul>
 				</section>
 
+				<!-- Slide -->
 				<section>
 					<h2>Binder!</h2>
 					<ul>
@@ -287,6 +502,7 @@
 					</ul>
 				</section>
 
+				<!-- Slide -->
 				<section>
 					<h2>Presentation!</h2>
 					<ul>
@@ -296,11 +512,12 @@
 					</ul>
 				</section>
 			</section>
-			<!-- 
--->
-			</section>
+			<!-- Address Rubrick/Requirements Slides END -->
 
-			<!-- Slide x -->
+
+
+
+			<!-- Conclusion Slide -->
 			<section>
 				<h2>Conclusion!</h2>
 				<p>
@@ -309,7 +526,6 @@
 			</section>
 
 		</div>
-
 	</div>
 
 
